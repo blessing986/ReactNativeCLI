@@ -1,45 +1,27 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { Alert, SafeAreaView, StyleSheet } from 'react-native';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import CustomButton from './src/components/CustomButton/CustomButtton';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+// import { SafeAreaView } from 'react-native-safe-area-context';
 
+const App = () => {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <SafeAreaView style={styles.safeContainer}>
+      <CustomButton title="Press me" onPress={() => Alert.alert('Pressed!')} />
+    </SafeAreaView>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;
+
+const styles = StyleSheet.create({
+  safeContainer: {
+    flex: 1,
+    backgroundColor: 'plum',
+  },
+  // container: {
+  //   flex: 1,
+  //   backgroundColor: 'plum',
+  //   paddingTop: Platform.OS === 'android' ? 25 : 0,
+  // },
+});
